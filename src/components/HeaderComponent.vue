@@ -29,6 +29,8 @@ export default {
 header{
     height: 80px;
     background-color: rgb(41, 49, 58);
+    position: fixed;
+    width: 100vw;
 }
 #menu{
     display: flex;

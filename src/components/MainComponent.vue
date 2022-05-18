@@ -1,5 +1,8 @@
 <template>
   <main>
+
+    <HeaderComponent />
+
       <div v-if="!isLoaded">
           <LoadingComponent />
       </div>
@@ -15,10 +18,11 @@
 import CardComponent from './CardComponent.vue';
 import axios from "axios";
 import LoadingComponent from "./LoadingComponent.vue";
+import HeaderComponent from './HeaderComponent.vue';
 
 export default {
     name: "MainComponent",
-    components: { CardComponent, LoadingComponent },
+    components: { CardComponent, LoadingComponent, HeaderComponent },
     data(){
     return{
       baseURL: "https://flynn.boolean.careers/exercises/api/array/music",
@@ -47,12 +51,12 @@ export default {
 
 main{
     background-color: rgb(30, 45, 59);
-    height: calc(100vh - 80px);
+    height: 100vh;
     overflow: auto;
     .container{
         display: flex;
         flex-wrap: wrap;
-        height: calc(100vh - 80px);
+        margin-top: 100px;
     }
 }
 
