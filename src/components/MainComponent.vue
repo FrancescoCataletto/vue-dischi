@@ -1,7 +1,8 @@
 <template>
   <main>
 
-    <HeaderComponent @change="option"/>
+    <HeaderComponent @cambiogenere="cambio"
+                     @cambioartista= "cambioartista"/>
 
       <div v-if="!isLoaded">
           <LoadingComponent />
@@ -28,7 +29,8 @@ export default {
       baseURL: "https://flynn.boolean.careers/exercises/api/array/music",
       musicArray: [],
       isLoaded: false,
-      musicGenre: ""
+      musicGenre: "",
+      currentArtist: ""
     }
   },
   methods: {
@@ -39,19 +41,26 @@ export default {
         this.isLoaded = !this.isLoaded
       })
     },
-    option(selected){
+    cambio(selected){
       this.musicGenre = selected
+    },
+    cambioartista(artist){
+      this.currentArtist = artist
     }
   },
 
   computed: {
     selectMusicGenre(){
       let filteredArray = [];
-      if(this.musicGenre.length === 0){
+      if(this.musicGenre.length === 0 && this.currentArtist.length === 0){
         filteredArray = this.musicArray
-      }else{
-        filteredArray = this.musicArray.filter(card => {
-          return card.genre.toUpperCase().includes(this.musicGenre.toUpperCase())
+      }else if(this.musicGenre.length !== 0){
+        filteredArray = this.musicArray.filter(music => {
+          return music.genre.toUpperCase().includes(this.musicGenre.toUpperCase())
+        })
+      }else if(this.currentArtist.length !== 0){
+        filteredArray = this.musicArray.filter(artist =>{
+          return artist.author.toUpperCase().includes(this.currentArtist.toUpperCase())
         })
       }
       return filteredArray;

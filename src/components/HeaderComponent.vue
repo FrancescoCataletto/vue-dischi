@@ -5,12 +5,20 @@
               <a href="#"><img src="../assets/style/spotify-logo-png-7053.png" alt=""></a>
           </div>
           <div>
-              <select name="" id="" @change="$emit('change', option)" v-model="option">
+              <select name="" id="" @change="$emit('cambiogenere', genere)" v-model="genere">
                   <option value="" selected>Seleziona un genere</option>
                   <option value="Rock">Rock</option>
                   <option value="Jazz">Jazz</option>
                   <option value="Pop">Pop</option>
                   <option value="Metal">Metal</option>
+              </select>
+
+              <select name="" id="" @change="$emit('cambioartista', artista)" v-model="artista">
+                  <option value="" selected>Seleziona un artista</option>
+                  <option value="Bon Jovi">Bon Jovi</option>
+                  <option value="Queen">Queen</option>
+                  <option value="Sting">Sting</option>
+                  <option value="Steve Gadd Band">Steve Gadd Band</option>
               </select>
           </div>
       </div>
@@ -22,7 +30,8 @@ export default {
     name: "HeaderComponent",
     data(){
         return{
-            option: ""
+            genere: "",
+            artista: ""
         }
     }
 }
