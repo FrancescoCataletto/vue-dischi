@@ -9,8 +9,8 @@
                   <option value="Choose" selected>Seleziona un genere</option>
                   <option value="rock">Rock</option>
                   <option value="Jazz">Jazz</option>
-                  <option value="Country">Country</option>
-                  <option value="Hip-Hop">Hip-Hop</option>
+                  <option value="Pop">Pop</option>
+                  <option value="Metal">Metal</option>
               </select>
           </div>
       </div>
