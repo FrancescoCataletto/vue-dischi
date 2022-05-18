@@ -1,13 +1,13 @@
 <template>
   <main>
 
-    <HeaderComponent />
+    <HeaderComponent @change="option"/>
 
       <div v-if="!isLoaded">
           <LoadingComponent />
       </div>
       <div class="container" v-else>
-          <CardComponent v-for="(card, index) in musicArray" 
+          <CardComponent v-for="(card, index) in selectMusicGenre" 
                         :key="`card-${index}`"
                         :musicCard="card"/>
       </div>
@@ -27,7 +27,8 @@ export default {
     return{
       baseURL: "https://flynn.boolean.careers/exercises/api/array/music",
       musicArray: [],
-      isLoaded: false
+      isLoaded: false,
+      musicGenre: ""
     }
   },
   methods: {
@@ -37,6 +38,23 @@ export default {
         this.musicArray = res.data.response;
         this.isLoaded = !this.isLoaded
       })
+    },
+    option(selected){
+      this.musicGenre = selected
+    }
+  },
+
+  computed: {
+    selectMusicGenre(){
+      let filteredArray = [];
+      if(this.musicGenre.length === 0){
+        filteredArray = this.musicArray
+      }else{
+        filteredArray = this.musicArray.filter(card => {
+          return card.genre.toUpperCase().includes(this.musicGenre.toUpperCase())
+        })
+      }
+      return filteredArray;
     }
   },
 

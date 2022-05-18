@@ -5,9 +5,9 @@
               <a href="#"><img src="../assets/style/spotify-logo-png-7053.png" alt=""></a>
           </div>
           <div>
-              <select name="" id="">
-                  <option value="Choose" selected>Seleziona un genere</option>
-                  <option value="rock">Rock</option>
+              <select name="" id="" @change="$emit('change', option)" v-model="option">
+                  <option value="" selected>Seleziona un genere</option>
+                  <option value="Rock">Rock</option>
                   <option value="Jazz">Jazz</option>
                   <option value="Pop">Pop</option>
                   <option value="Metal">Metal</option>
@@ -19,7 +19,12 @@
 
 <script>
 export default {
-    name: "HeaderComponent"
+    name: "HeaderComponent",
+    data(){
+        return{
+            option: ""
+        }
+    }
 }
 </script>
 
